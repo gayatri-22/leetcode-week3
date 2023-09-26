@@ -1,5 +1,8 @@
 class Solution {
     public int majorityElement(int[] nums) {
+
+        //HashMap Solution
+        
         Arrays.sort(nums);
         HashMap<Integer,Integer> map = new HashMap<>();
         for(int num:nums){
@@ -11,5 +14,31 @@ class Solution {
             }
         }
         return -1;
+    }
+}
+
+----------------------------------------------
+
+class Solution {
+    public int majorityElement(int[] nums) {
+
+        //BOYER MOORE VOTING ALGORITHM
+        
+        int count=0;
+        int candidate =0;
+
+        for(int num:nums){
+            if(count==0){
+                candidate = num;
+            }
+
+            if(num==candidate){
+                count++;
+            }
+            else{
+                count--;
+            }
+        }
+        return candidate;
     }
 }
